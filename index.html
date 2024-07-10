@@ -58,7 +58,7 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Sweet Recipes Login</h2>
+        <h2>Get Your Sweets Now!</h2>
         <form id="loginForm">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
@@ -74,8 +74,8 @@
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
+            var username = document.getElementById('dinner').value;
+            var password = document.getElementById('cake').value;
             if (username === 'admin' && password === 'password') {
                 window.location.href = 'secret.html';
             } else {
@@ -85,12 +85,12 @@
 
         document.getElementById('forgotUsername').addEventListener('click', function(e) {
             e.preventDefault();
-            document.getElementById('message').innerHTML = 'Username Hint: What\'s your favorite time to eat?';
+            document.getElementById('message').innerHTML = 'Username Hint: When are you going to eat?';
         });
 
         document.getElementById('forgotPassword').addEventListener('click', function(e) {
             e.preventDefault();
-            document.getElementById('message').innerHTML = 'Password Hint: What\'s your favorite food?';
+            document.getElementById('message').innerHTML = 'Password Hint: What are you going to eat?';
         });
     </script>
 </body>

@@ -4,25 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweet Recipes Login</title>
-    <style>
-        /* Add your CSS styles here */
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="login-container">
-        <h2>Sweet Recipes Login</h2>
+        <h2>Get Your Sweets Now!</h2>
         <form id="loginForm">
-            <p>
-                <label for="username">Username</label>
-                <input type="text" id="username" required>
-            </p>
-            <p>
-                <label for="password">Password</label>
-                <input type="password" id="password" required>
-            </p>
-            <p>
-                <button type="submit">Log In</button>
-            </p>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
         </form>
         <div class="forgot">
             <a href="#" id="forgotUsername">Forgot Username</a> | 
@@ -32,32 +22,32 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            
-            // Simple check - replace with your desired username/password
-            if (username === 'admin' && password === 'password') {
-                localStorage.setItem('loggedIn', 'true');
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        if (username === 'dinner' && password === 'cake') {
+            document.getElementById('message').innerHTML = 'Login successful! Redirecting...';
+            setTimeout(function() {
                 window.location.href = 'secret.html';
-            } else {
-                document.getElementById('message').innerHTML = 'Invalid username or password.';
-            }
-        });
-
-        function forgotUsername(e) {
-            e.preventDefault();
-            document.getElementById('message').innerHTML = 'Username Hint: What\'s your favorite time to eat?';
+            }, 2000);
+        } else {
+            document.getElementById('message').innerHTML = 'Invalid username or password.';
         }
+    });
 
-        function forgotPassword(e) {
-            e.preventDefault();
-            document.getElementById('message').innerHTML = 'Password Hint: What\'s your favorite food?';
-        }
+    function forgotUsername(e) {
+        e.preventDefault();
+        document.getElementById('message').innerHTML = 'Username Hint: when you are going to eat?';
+    }
 
-        document.getElementById('forgotUsername').addEventListener('click', forgotUsername);
-        document.getElementById('forgotPassword').addEventListener('click', forgotPassword);
+    function forgotPassword(e) {
+        e.preventDefault();
+        document.getElementById('message').innerHTML = 'Password Hint: What you are going to eat?';
+    }
+
+    document.getElementById('forgotUsername').addEventListener('click', forgotUsername);
+    document.getElementById('forgotPassword').addEventListener('click', forgotPassword);
     </script>
 </body>
 </html>

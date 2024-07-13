@@ -5,64 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweet Recipes Login</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e8f5e9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .login-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            width: 300px;
-        }
-        h2 {
-            text-align: center;
-            color: #2e7d32;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #a5d6a7;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .forgot {
-            text-align: center;
-            margin-top: 10px;
-        }
-        #message {
-            color: red;
-            text-align: center;
-            margin-top: 10px;
-        }
+        /* Add your CSS styles here */
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Get Your Sweets Now!</h2>
+        <h2>Sweet Recipes Login</h2>
         <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Log In</button>
+            <p>
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </p>
+            <p>
+                <button type="submit">Log In</button>
+            </p>
         </form>
         <div class="forgot">
             <a href="#" id="forgotUsername">Forgot Username</a> | 
@@ -74,24 +34,30 @@
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            var username = document.getElementById('dinner').value;
-            var password = document.getElementById('cake').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            
+            // Simple check - replace with your desired username/password
             if (username === 'admin' && password === 'password') {
+                localStorage.setItem('loggedIn', 'true');
                 window.location.href = 'secret.html';
             } else {
-                document.getElementById('message').innerHTML = 'Invalid username or password';
+                document.getElementById('message').innerHTML = 'Invalid username or password.';
             }
         });
 
-        document.getElementById('forgotUsername').addEventListener('click', function(e) {
+        function forgotUsername(e) {
             e.preventDefault();
-            document.getElementById('message').innerHTML = 'Username Hint: When are you going to eat?';
-        });
+            document.getElementById('message').innerHTML = 'Username Hint: What\'s your favorite time to eat?';
+        }
 
-        document.getElementById('forgotPassword').addEventListener('click', function(e) {
+        function forgotPassword(e) {
             e.preventDefault();
-            document.getElementById('message').innerHTML = 'Password Hint: What are you going to eat?';
-        });
+            document.getElementById('message').innerHTML = 'Password Hint: What\'s your favorite food?';
+        }
+
+        document.getElementById('forgotUsername').addEventListener('click', forgotUsername);
+        document.getElementById('forgotPassword').addEventListener('click', forgotPassword);
     </script>
 </body>
 </html>
